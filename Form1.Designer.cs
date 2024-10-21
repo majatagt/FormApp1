@@ -34,12 +34,10 @@
             txtbName = new TextBox();
             txtboxWeight = new TextBox();
             txtboxHeight = new TextBox();
-            gender = new Label();
             rbfemale = new RadioButton();
             rbMale = new RadioButton();
             lblActivityLvl = new Label();
             cbActivityLevel = new ComboBox();
-            lblUnit = new Label();
             rbMetric = new RadioButton();
             rbImperial = new RadioButton();
             btnCalculate = new Button();
@@ -68,6 +66,10 @@
             rstTotalInvestment = new Label();
             rstTotalGrowth = new Label();
             rbOther = new RadioButton();
+            grbGender = new GroupBox();
+            grbUnit = new GroupBox();
+            grbGender.SuspendLayout();
+            grbUnit.SuspendLayout();
             SuspendLayout();
             // 
             // lblname
@@ -125,21 +127,11 @@
             txtboxHeight.Size = new Size(196, 31);
             txtboxHeight.TabIndex = 5;
             // 
-            // gender
-            // 
-            gender.AutoSize = true;
-            gender.Font = new Font("Bookman Old Style", 10F);
-            gender.Location = new Point(386, 29);
-            gender.Name = "gender";
-            gender.Size = new Size(82, 23);
-            gender.TabIndex = 6;
-            gender.Text = "Gender";
-            // 
             // rbfemale
             // 
             rbfemale.AutoSize = true;
             rbfemale.Font = new Font("Bookman Old Style", 10F);
-            rbfemale.Location = new Point(473, 29);
+            rbfemale.Location = new Point(94, 18);
             rbfemale.Name = "rbfemale";
             rbfemale.Size = new Size(106, 27);
             rbfemale.TabIndex = 7;
@@ -152,7 +144,7 @@
             // 
             rbMale.AutoSize = true;
             rbMale.Font = new Font("Bookman Old Style", 10F);
-            rbMale.Location = new Point(589, 29);
+            rbMale.Location = new Point(210, 18);
             rbMale.Name = "rbMale";
             rbMale.Size = new Size(82, 27);
             rbMale.TabIndex = 8;
@@ -179,22 +171,11 @@
             cbActivityLevel.Size = new Size(175, 31);
             cbActivityLevel.TabIndex = 10;
             // 
-            // lblUnit
-            // 
-            lblUnit.AutoSize = true;
-            lblUnit.Font = new Font("Bookman Old Style", 10F);
-            lblUnit.Location = new Point(21, 217);
-            lblUnit.Name = "lblUnit";
-            lblUnit.Size = new Size(53, 23);
-            lblUnit.TabIndex = 11;
-            lblUnit.Text = "Unit";
-            lblUnit.Click += label1_Click;
-            // 
             // rbMetric
             // 
             rbMetric.AutoSize = true;
             rbMetric.Font = new Font("Bookman Old Style", 10F);
-            rbMetric.Location = new Point(108, 217);
+            rbMetric.Location = new Point(18, 21);
             rbMetric.Name = "rbMetric";
             rbMetric.Size = new Size(97, 27);
             rbMetric.TabIndex = 12;
@@ -207,7 +188,7 @@
             // 
             rbImperial.AutoSize = true;
             rbImperial.Font = new Font("Bookman Old Style", 10F);
-            rbImperial.Location = new Point(224, 217);
+            rbImperial.Location = new Point(128, 21);
             rbImperial.Name = "rbImperial";
             rbImperial.Size = new Size(117, 27);
             rbImperial.TabIndex = 13;
@@ -248,7 +229,7 @@
             // 
             lblRecWaterIntake.AutoSize = true;
             lblRecWaterIntake.Font = new Font("Bookman Old Style", 10F);
-            lblRecWaterIntake.Location = new Point(760, 29);
+            lblRecWaterIntake.Location = new Point(729, 29);
             lblRecWaterIntake.Name = "lblRecWaterIntake";
             lblRecWaterIntake.Size = new Size(324, 23);
             lblRecWaterIntake.TabIndex = 17;
@@ -263,6 +244,7 @@
             lblMetricIntake.TabIndex = 18;
             lblMetricIntake.Text = "label1";
             lblMetricIntake.TextAlign = ContentAlignment.TopCenter;
+            lblMetricIntake.Click += lblMetricIntake_Click;
             // 
             // rstImperial
             // 
@@ -273,6 +255,7 @@
             rstImperial.TabIndex = 19;
             rstImperial.Text = "label2";
             rstImperial.TextAlign = ContentAlignment.TopCenter;
+            rstImperial.Click += rstImperial_Click;
             // 
             // lblRestSavings
             // 
@@ -457,7 +440,7 @@
             // 
             rbOther.AutoSize = true;
             rbOther.Font = new Font("Bookman Old Style", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rbOther.Location = new Point(473, 62);
+            rbOther.Location = new Point(94, 51);
             rbOther.Name = "rbOther";
             rbOther.Size = new Size(148, 27);
             rbOther.TabIndex = 39;
@@ -465,12 +448,38 @@
             rbOther.Text = "Non-Binary";
             rbOther.UseVisualStyleBackColor = true;
             // 
+            // grbGender
+            // 
+            grbGender.Controls.Add(rbOther);
+            grbGender.Controls.Add(rbMale);
+            grbGender.Controls.Add(rbfemale);
+            grbGender.Font = new Font("Bookman Old Style", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            grbGender.Location = new Point(379, 11);
+            grbGender.Name = "grbGender";
+            grbGender.Size = new Size(315, 89);
+            grbGender.TabIndex = 40;
+            grbGender.TabStop = false;
+            grbGender.Text = "Gender";
+            // 
+            // grbUnit
+            // 
+            grbUnit.Controls.Add(rbImperial);
+            grbUnit.Controls.Add(rbMetric);
+            grbUnit.Font = new Font("Bookman Old Style", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            grbUnit.Location = new Point(12, 197);
+            grbUnit.Name = "grbUnit";
+            grbUnit.Size = new Size(277, 61);
+            grbUnit.TabIndex = 41;
+            grbUnit.TabStop = false;
+            grbUnit.Text = "Unit";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1111, 659);
-            Controls.Add(rbOther);
+            Controls.Add(grbUnit);
+            Controls.Add(grbGender);
             Controls.Add(rstTotalGrowth);
             Controls.Add(rstTotalInvestment);
             Controls.Add(RsltTotInterest);
@@ -496,14 +505,8 @@
             Controls.Add(txtbBirthYear);
             Controls.Add(lblBirthyear);
             Controls.Add(btnCalculate);
-            Controls.Add(rbImperial);
-            Controls.Add(rbMetric);
-            Controls.Add(lblUnit);
             Controls.Add(cbActivityLevel);
             Controls.Add(lblActivityLvl);
-            Controls.Add(rbMale);
-            Controls.Add(rbfemale);
-            Controls.Add(gender);
             Controls.Add(txtboxHeight);
             Controls.Add(txtboxWeight);
             Controls.Add(txtbName);
@@ -513,6 +516,10 @@
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
+            grbGender.ResumeLayout(false);
+            grbGender.PerformLayout();
+            grbUnit.ResumeLayout(false);
+            grbUnit.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -525,12 +532,10 @@
         private TextBox txtbName;
         private TextBox txtboxWeight;
         private TextBox txtboxHeight;
-        private Label gender;
         private RadioButton rbfemale;
         private RadioButton rbMale;
         private Label lblActivityLvl;
         private ComboBox cbActivityLevel;
-        private Label lblUnit;
         private RadioButton rbMetric;
         private RadioButton rbImperial;
         private Button btnCalculate;
@@ -559,5 +564,7 @@
         private Label rstTotalInvestment;
         private Label rstTotalGrowth;
         private RadioButton rbOther;
+        private GroupBox grbGender;
+        private GroupBox grbUnit;
     }
 }

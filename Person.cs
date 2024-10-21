@@ -6,7 +6,9 @@
     private string Name { get; set; }
     private double Weight { get; set; }
     private double Height { get; set; }
+    private string Gender { get; set; }
     private int YearOfBirth { get; set; }
+    private string ActivityLevel { get; set; }
 
 
     internal Person(string name, double weight, double height, int age)
@@ -23,6 +25,8 @@
         int Age = currentYear - yearOfBirth;
 
     }
+
+    
 
 }
 

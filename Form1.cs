@@ -13,12 +13,12 @@ namespace FormApp1
             InitializeComponent();
             InitializeGUI();
             cbActivityLevel.DataSource = Enum.GetValues(typeof(ActivityLevel));
-            
+
         }
 
         public void InitializeGUI() //method to instansiate app and clear text boxes, and pre select gender and unit
         {
-            
+
             txtboxHeight.Text = String.Empty;
             txtbName.Text = String.Empty;
             txtboxWeight.Text = String.Empty;
@@ -50,7 +50,7 @@ namespace FormApp1
                 setUnit = Unit.Metric;
             }
             else
-            { 
+            {
                 setUnit = Unit.Imperial;
             }
         }
@@ -61,7 +61,7 @@ namespace FormApp1
         }
 
         //failure handling to accept numerical input and values greater than 0. If 2/3 input fields are correct, error message prevails
-        private void button1_Click(object sender, EventArgs e) 
+        private void button1_Click(object sender, EventArgs e)
         {
             string name = txtbName.Text;
             double height;
@@ -69,10 +69,10 @@ namespace FormApp1
             int birthYear;
 
             if (!double.TryParse(txtboxHeight.Text, out height) || height <= 0)
-                {
+            {
                 MessageBox.Show("Enter a valid number!");
                 return;
-                }
+            }
             if (!double.TryParse(txtboxWeight.Text, out weight) || weight <= 0)
             {
                 MessageBox.Show("Enter a valid number!");
@@ -85,13 +85,7 @@ namespace FormApp1
             }
 
             // call method to instansiate person based on correct input
-            Person person = new Person();
-            {
-                name = Name;
-                height = Height;
-                weight = Weight;
-                birthYear = birthYear;
-            };
+
 
         }
 
@@ -111,6 +105,19 @@ namespace FormApp1
 
         }
 
+        private void lblMonthSav_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void lblMetricIntake_Click(object sender, EventArgs e)
+        {
+            lblMetricIntake.Text = CalculateWaterIntake();
+        }
+
+        private void rstImperial_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
