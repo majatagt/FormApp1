@@ -112,12 +112,16 @@ namespace FormApp1
 
         private void lblMetricIntake_Click(object sender, EventArgs e)
         {
-            lblMetricIntake.Text = CalculateWaterIntake();
+            //lblMetricIntake.Text = WaterIntakeCalculator();
         }
 
         private void rstImperial_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtbName_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

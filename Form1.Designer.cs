@@ -110,6 +110,7 @@
             txtbName.Name = "txtbName";
             txtbName.Size = new Size(195, 31);
             txtbName.TabIndex = 4;
+            txtbName.TextChanged += txtbName_TextChanged;
             // 
             // txtboxWeight
             // 

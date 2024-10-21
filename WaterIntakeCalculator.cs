@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 
     internal class WaterIntakeCalculator(Person person)
     {
-    private Person person = new Person();
-    double baseIntake = 33;
-    public float recomendedIntake;
+    //private Person person = new Person(); This is giving error and I don't understand why
+
+   
+    public double recomendedIntake;
 
     //method to get calculate total water intake based on weight
     public static double BaseIntake(double weight)
@@ -19,19 +20,33 @@ using System.Threading.Tasks;
         return 33 * weight;
     }
 
-    public static double GenderIntake(string gender)
+    public static double GenderIntake(Gender gender)
     {
-        if (gender == "female")
+        switch (gender)
         {
-            return 0.9; //decrease by ten percent
+            case Gender.Female:
+                    return 0.9; //decrease by ten percent
+            case Gender.Male:
+                    return 1.1; //increase by ten percent
+            case Gender.Them:
+                    return 1.0; //no change for other gender
+            default: 
+                return 1.0;
         }
-        else if (gender == "male")
-        {
-            return 1.1; //increase by ten percent
-        }
-        else if (gender == "other")
-        {
-            return 1.0; //no change for other gender
+    }
+    //method to parse the gender enum to string 
+   public static Gender GenderParse(string gender)
+    { 
+    switch (gender.ToLower()) 
+    {
+            case "female":
+                return Gender.Female;
+            case "male":
+                return Gender.Male;
+            case "other":
+                return Gender.Them;
+        default:
+                return Gender.Them;
         }
     }
 
@@ -60,37 +75,53 @@ using System.Threading.Tasks;
         }
         return 1.0; // if between 160 and 175
     }
-    public static double ActivityLevels(string activityLevel)
+    public static double ActivityLevels(ActivityLevel activityLevel)
     {
-        //activity level variable declared
-        ActivityLevel activitylevel;
         //set activity level to low as standard if no valid input, but no input not likely
-        switch (activitylevel)
+
+        switch (activityLevel)
         {
-            case "low":
-                activitylevel = ActivityLevel.Low;
+            case ActivityLevel.Low:
+                activityLevel = ActivityLevel.Low;
                 return 1.0;
-            case "medium":
-                activitylevel = ActivityLevel.Medium;
+            case ActivityLevel.Medium:
+                activityLevel = ActivityLevel.Medium;
                 return 1.2;
-            case "high":
+            case ActivityLevel.High:
                 activityLevel = ActivityLevel.High;
                 return 1.5;
             default:
-                activitylevel = ActivityLevel.Low;
+                activityLevel = ActivityLevel.Low;
                 return 1.0;
         }
     }
+    //method to parse enum to strings to pass as argument in CalculateWaterIntake method
+    public static ActivityLevel ActivityLevelParse(string activityLevel)
+    {
+        switch (activityLevel.ToLower())
+        {
+            case "Low":
+                return ActivityLevel.Low;
+            case "Medium":
+                return ActivityLevel.Medium;
+            case "High":
+                return ActivityLevel.High;
+            default: 
+                return ActivityLevel.Low;
+        }
+    }
+
+
     public static double CalculateWaterIntake(string gender, int age, double weight, double height, string activityLevel)
     {
         double baseIntake = BaseIntake(weight);
 
-        double genderIntake = GenderIntake(gender);
+        double genderIntake = GenderIntake(GenderParse(gender));
         double ageIntake = AgeIntake(age);
         double heightIntake = HeightIntake(height);
-        double activityLevels = ActivityLevels(activityLevel);
+        double activityLevels = ActivityLevels(ActivityLevelParse(activityLevel));
 
-        recomendedIntake = baseIntake * genderIntake * ageIntake * heightIntake * activityLevels;
+        double recomendedIntake = baseIntake * genderIntake * ageIntake * heightIntake * activityLevels;
         return recomendedIntake;
 
     }
