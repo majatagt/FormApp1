@@ -1,6 +1,7 @@
 using Microsoft.VisualBasic.ApplicationServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
+using System.Diagnostics.Eventing.Reader;
 
 namespace FormApp1
 {
@@ -54,10 +55,11 @@ namespace FormApp1
                 setUnit = Unit.Imperial;
             }
         }
-
+        //populating the combo box with enum of Activity Levels and pre populating the first box to low level of activity
         private void cbActivityLevel_SelectedIndexChange(object sender, EventArgs e)
         {
             ActivityLevel setActivityLevel = (ActivityLevel)cbActivityLevel.SelectedItem;
+            cbActivityLevel.SelectedIndex = (int)ActivityLevel.Low;
         }
 
         //failure handling to accept numerical input and values greater than 0. If 2/3 input fields are correct, error message prevails
@@ -120,8 +122,18 @@ namespace FormApp1
 
         }
 
-        private void txtbName_TextChanged(object sender, EventArgs e)
+        private void txtbName_TextChanged(object sender, EventArgs e, Person person)
         {
+            txtbName.Text.Trim();
+            if (!string.IsNullOrEmpty(txtbName.Text))
+            {
+                person.Name = txtbName.Text;
+            }
+            else
+            {
+                person.Name = "Unknown";
+            }
+            }
         }
     }
 }

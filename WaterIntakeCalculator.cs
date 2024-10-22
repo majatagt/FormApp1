@@ -9,11 +9,22 @@ using System.Threading.Tasks;
 
     internal class WaterIntakeCalculator(Person person)
     {
-    //private Person person = new Person(); This is giving error and I don't understand why
+    private Person person = new Person(); //This is giving error and I don't understand why as I am declaring name 
+    this.person = person;
+        public static double CalculateWaterIntake(string gender, int age, double weight, double height, string activityLevel)
+    {
 
-   
-    public double recomendedIntake;
+        double baseIntake = BaseIntake(weight);
 
+        double genderIntake = GenderIntake(GenderParse(gender));
+        double ageIntake = AgeIntake(age);
+        double heightIntake = HeightIntake(height);
+        double activityLevels = ActivityLevels(ActivityLevelParse(activityLevel));
+
+        double recomendedIntake = baseIntake * genderIntake * ageIntake * heightIntake * activityLevels;
+        return recomendedIntake;
+
+    }
     //method to get calculate total water intake based on weight
     public static double BaseIntake(double weight)
     {
@@ -98,33 +109,34 @@ using System.Threading.Tasks;
     //method to parse enum to strings to pass as argument in CalculateWaterIntake method
     public static ActivityLevel ActivityLevelParse(string activityLevel)
     {
-        switch (activityLevel.ToLower())
-        {
-            case "Low":
-                return ActivityLevel.Low;
-            case "Medium":
-                return ActivityLevel.Medium;
-            case "High":
-                return ActivityLevel.High;
-            default: 
-                return ActivityLevel.Low;
+        if (Enum.TryParse(activityLevel, out ActivityLevel level))
+            {
+            return level;
+            }
+                else {
+            return ActivityLevel.Low;
+            }
+
+
+            //ActivityLevel level = ()
+
+
+
+            //switch (activityLevel.ToLower())
+            //{
+            //    case "low":
+            //        return ActivityLevel.Low;
+            //    case "medium":
+            //        return ActivityLevel.Medium;
+            //    case "high":
+            //        return ActivityLevel.High;
+            //    default: 
+            //        return ActivityLevel.Low;
+            //}
         }
-    }
 
 
-    public static double CalculateWaterIntake(string gender, int age, double weight, double height, string activityLevel)
-    {
-        double baseIntake = BaseIntake(weight);
 
-        double genderIntake = GenderIntake(GenderParse(gender));
-        double ageIntake = AgeIntake(age);
-        double heightIntake = HeightIntake(height);
-        double activityLevels = ActivityLevels(ActivityLevelParse(activityLevel));
-
-        double recomendedIntake = baseIntake * genderIntake * ageIntake * heightIntake * activityLevels;
-        return recomendedIntake;
-
-    }
 
 
 

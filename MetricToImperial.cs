@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+//To do
+using System.Security.AccessControl;
 
-namespace FormApp1
-{
-    internal class MetricToImperial
+//static string ConvertToImperial (string gender, Gender age, double weight, double height, ActivityLevel activityLevel)
     {
+
+
     }
-}
+
