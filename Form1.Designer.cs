@@ -90,7 +90,7 @@
             lblweight.Location = new Point(12, 83);
             lblweight.Name = "lblweight";
             lblweight.Size = new Size(119, 23);
-            lblweight.TabIndex = 1;
+            lblweight.TabIndex = 2;
             lblweight.Text = "Weight (kg)";
             // 
             // lblheight
@@ -100,7 +100,7 @@
             lblheight.Location = new Point(12, 135);
             lblheight.Name = "lblheight";
             lblheight.Size = new Size(115, 23);
-            lblheight.TabIndex = 2;
+            lblheight.TabIndex = 3;
             lblheight.Text = "Height(cm)";
             // 
             // txtbName
@@ -110,7 +110,6 @@
             txtbName.Name = "txtbName";
             txtbName.Size = new Size(195, 31);
             txtbName.TabIndex = 4;
-            txtbName.TextChanged += txtbName_TextChanged;
             // 
             // txtboxWeight
             // 
@@ -118,7 +117,8 @@
             txtboxWeight.Location = new Point(128, 79);
             txtboxWeight.Name = "txtboxWeight";
             txtboxWeight.Size = new Size(196, 31);
-            txtboxWeight.TabIndex = 4;
+            txtboxWeight.TabIndex = 5;
+            txtboxWeight.TextChanged += txtboxWeight_TextChanged;
             // 
             // txtboxHeight
             // 
@@ -126,7 +126,7 @@
             txtboxHeight.Location = new Point(129, 132);
             txtboxHeight.Name = "txtboxHeight";
             txtboxHeight.Size = new Size(196, 31);
-            txtboxHeight.TabIndex = 5;
+            txtboxHeight.TabIndex = 6;
             // 
             // rbfemale
             // 
@@ -179,7 +179,7 @@
             rbMetric.Location = new Point(18, 21);
             rbMetric.Name = "rbMetric";
             rbMetric.Size = new Size(97, 27);
-            rbMetric.TabIndex = 12;
+            rbMetric.TabIndex = 11;
             rbMetric.TabStop = true;
             rbMetric.Text = "Metric";
             rbMetric.UseVisualStyleBackColor = true;
@@ -192,7 +192,7 @@
             rbImperial.Location = new Point(128, 21);
             rbImperial.Name = "rbImperial";
             rbImperial.Size = new Size(117, 27);
-            rbImperial.TabIndex = 13;
+            rbImperial.TabIndex = 12;
             rbImperial.TabStop = true;
             rbImperial.Text = "Imperial";
             rbImperial.UseVisualStyleBackColor = true;
@@ -203,7 +203,7 @@
             btnCalculate.Location = new Point(386, 254);
             btnCalculate.Name = "btnCalculate";
             btnCalculate.Size = new Size(305, 53);
-            btnCalculate.TabIndex = 14;
+            btnCalculate.TabIndex = 13;
             btnCalculate.Text = "Calculate!";
             btnCalculate.UseVisualStyleBackColor = true;
             btnCalculate.Click += button1_Click;
@@ -215,7 +215,7 @@
             lblBirthyear.Location = new Point(386, 187);
             lblBirthyear.Name = "lblBirthyear";
             lblBirthyear.Size = new Size(110, 23);
-            lblBirthyear.TabIndex = 15;
+            lblBirthyear.TabIndex = 14;
             lblBirthyear.Text = "Birth year";
             // 
             // txtbBirthYear
@@ -224,7 +224,7 @@
             txtbBirthYear.Location = new Point(527, 184);
             txtbBirthYear.Name = "txtbBirthYear";
             txtbBirthYear.Size = new Size(175, 31);
-            txtbBirthYear.TabIndex = 16;
+            txtbBirthYear.TabIndex = 15;
             // 
             // lblRecWaterIntake
             // 
@@ -233,7 +233,7 @@
             lblRecWaterIntake.Location = new Point(729, 29);
             lblRecWaterIntake.Name = "lblRecWaterIntake";
             lblRecWaterIntake.Size = new Size(324, 23);
-            lblRecWaterIntake.TabIndex = 17;
+            lblRecWaterIntake.TabIndex = 16;
             lblRecWaterIntake.Text = "Recomended dailty water intake";
             // 
             // lblMetricIntake
@@ -242,7 +242,7 @@
             lblMetricIntake.Location = new Point(760, 87);
             lblMetricIntake.Name = "lblMetricIntake";
             lblMetricIntake.Size = new Size(263, 35);
-            lblMetricIntake.TabIndex = 18;
+            lblMetricIntake.TabIndex = 17;
             lblMetricIntake.Text = "label1";
             lblMetricIntake.TextAlign = ContentAlignment.TopCenter;
             lblMetricIntake.Click += lblMetricIntake_Click;
@@ -253,7 +253,7 @@
             rstImperial.Location = new Point(760, 138);
             rstImperial.Name = "rstImperial";
             rstImperial.Size = new Size(263, 35);
-            rstImperial.TabIndex = 19;
+            rstImperial.TabIndex = 18;
             rstImperial.Text = "label2";
             rstImperial.TextAlign = ContentAlignment.TopCenter;
             rstImperial.Click += rstImperial_Click;
@@ -265,7 +265,7 @@
             lblRestSavings.Location = new Point(12, 350);
             lblRestSavings.Name = "lblRestSavings";
             lblRestSavings.Size = new Size(198, 23);
-            lblRestSavings.TabIndex = 20;
+            lblRestSavings.TabIndex = 19;
             lblRestSavings.Text = "Retirement savings";
             // 
             // comboBox1
@@ -275,7 +275,7 @@
             comboBox1.Location = new Point(174, 389);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(81, 31);
-            comboBox1.TabIndex = 21;
+            comboBox1.TabIndex = 20;
             // 
             // retAge
             // 
@@ -284,7 +284,7 @@
             retAge.Location = new Point(12, 392);
             retAge.Name = "retAge";
             retAge.Size = new Size(161, 23);
-            retAge.TabIndex = 22;
+            retAge.TabIndex = 21;
             retAge.Text = "Retirement Age";
             retAge.Click += label1_Click_1;
             // 
@@ -295,7 +295,7 @@
             lblCurSav.Location = new Point(270, 387);
             lblCurSav.Name = "lblCurSav";
             lblCurSav.Size = new Size(171, 23);
-            lblCurSav.TabIndex = 23;
+            lblCurSav.TabIndex = 22;
             lblCurSav.Text = "Current Savings";
             // 
             // lblMonthSav
@@ -305,7 +305,7 @@
             lblMonthSav.Location = new Point(270, 427);
             lblMonthSav.Name = "lblMonthSav";
             lblMonthSav.Size = new Size(172, 23);
-            lblMonthSav.TabIndex = 24;
+            lblMonthSav.TabIndex = 23;
             lblMonthSav.Text = "Monthly Savings";
             // 
             // lblAnnualInterest
@@ -315,7 +315,7 @@
             lblAnnualInterest.Location = new Point(270, 468);
             lblAnnualInterest.Name = "lblAnnualInterest";
             lblAnnualInterest.Size = new Size(166, 23);
-            lblAnnualInterest.TabIndex = 25;
+            lblAnnualInterest.TabIndex = 24;
             lblAnnualInterest.Text = "Annual Interest";
             // 
             // textBox2
@@ -324,7 +324,7 @@
             textBox2.Location = new Point(447, 384);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(154, 31);
-            textBox2.TabIndex = 26;
+            textBox2.TabIndex = 25;
             // 
             // textBox3
             // 
@@ -332,7 +332,7 @@
             textBox3.Location = new Point(446, 421);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(155, 31);
-            textBox3.TabIndex = 27;
+            textBox3.TabIndex = 26;
             // 
             // textBox4
             // 
@@ -340,7 +340,7 @@
             textBox4.Location = new Point(446, 460);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(155, 31);
-            textBox4.TabIndex = 28;
+            textBox4.TabIndex = 27;
             // 
             // lblYeartoRet
             // 
@@ -349,7 +349,7 @@
             lblYeartoRet.Location = new Point(634, 384);
             lblYeartoRet.Name = "lblYeartoRet";
             lblYeartoRet.Size = new Size(205, 23);
-            lblYeartoRet.TabIndex = 29;
+            lblYeartoRet.TabIndex = 28;
             lblYeartoRet.Text = "Years to Retirement";
             // 
             // lblTotalFutureAmount
@@ -359,7 +359,7 @@
             lblTotalFutureAmount.Location = new Point(634, 420);
             lblTotalFutureAmount.Name = "lblTotalFutureAmount";
             lblTotalFutureAmount.Size = new Size(218, 23);
-            lblTotalFutureAmount.TabIndex = 30;
+            lblTotalFutureAmount.TabIndex = 29;
             lblTotalFutureAmount.Text = "Total Future Amount";
             // 
             // lblTotInterest
@@ -379,7 +379,7 @@
             lblTotInvestment.Location = new Point(634, 507);
             lblTotInvestment.Name = "lblTotInvestment";
             lblTotInvestment.Size = new Size(176, 23);
-            lblTotInvestment.TabIndex = 32;
+            lblTotInvestment.TabIndex = 30;
             lblTotInvestment.Text = "Total Investment";
             // 
             // lblGrowthInPer
@@ -389,7 +389,7 @@
             lblGrowthInPer.Location = new Point(634, 550);
             lblGrowthInPer.Name = "lblGrowthInPer";
             lblGrowthInPer.Size = new Size(190, 23);
-            lblGrowthInPer.TabIndex = 33;
+            lblGrowthInPer.TabIndex = 31;
             lblGrowthInPer.Text = "Total Growth in %";
             // 
             // rsltYearstoRetirement
@@ -398,7 +398,7 @@
             rsltYearstoRetirement.Location = new Point(933, 382);
             rsltYearstoRetirement.Name = "rsltYearstoRetirement";
             rsltYearstoRetirement.Size = new Size(8, 8);
-            rsltYearstoRetirement.TabIndex = 34;
+            rsltYearstoRetirement.TabIndex = 32;
             rsltYearstoRetirement.Text = "label1";
             // 
             // RsltFutureAmount
@@ -407,7 +407,7 @@
             RsltFutureAmount.Location = new Point(906, 422);
             RsltFutureAmount.Name = "RsltFutureAmount";
             RsltFutureAmount.Size = new Size(88, 38);
-            RsltFutureAmount.TabIndex = 35;
+            RsltFutureAmount.TabIndex = 33;
             RsltFutureAmount.Text = "label2";
             // 
             // RsltTotInterest
@@ -416,7 +416,7 @@
             RsltTotInterest.Location = new Point(906, 466);
             RsltTotInterest.Name = "RsltTotInterest";
             RsltTotInterest.Size = new Size(8, 8);
-            RsltTotInterest.TabIndex = 36;
+            RsltTotInterest.TabIndex = 34;
             RsltTotInterest.Text = "label3";
             // 
             // rstTotalInvestment
@@ -425,7 +425,7 @@
             rstTotalInvestment.Location = new Point(906, 515);
             rstTotalInvestment.Name = "rstTotalInvestment";
             rstTotalInvestment.Size = new Size(8, 8);
-            rstTotalInvestment.TabIndex = 37;
+            rstTotalInvestment.TabIndex = 35;
             rstTotalInvestment.Text = "label4";
             // 
             // rstTotalGrowth
@@ -434,7 +434,7 @@
             rstTotalGrowth.Location = new Point(906, 550);
             rstTotalGrowth.Name = "rstTotalGrowth";
             rstTotalGrowth.Size = new Size(88, 38);
-            rstTotalGrowth.TabIndex = 38;
+            rstTotalGrowth.TabIndex = 36;
             rstTotalGrowth.Text = "label5";
             // 
             // rbOther
@@ -444,7 +444,7 @@
             rbOther.Location = new Point(94, 51);
             rbOther.Name = "rbOther";
             rbOther.Size = new Size(148, 27);
-            rbOther.TabIndex = 39;
+            rbOther.TabIndex = 37;
             rbOther.TabStop = true;
             rbOther.Text = "Non-Binary";
             rbOther.UseVisualStyleBackColor = true;
@@ -458,7 +458,7 @@
             grbGender.Location = new Point(379, 11);
             grbGender.Name = "grbGender";
             grbGender.Size = new Size(315, 89);
-            grbGender.TabIndex = 40;
+            grbGender.TabIndex = 38;
             grbGender.TabStop = false;
             grbGender.Text = "Gender";
             // 
@@ -470,7 +470,7 @@
             grbUnit.Location = new Point(12, 197);
             grbUnit.Name = "grbUnit";
             grbUnit.Size = new Size(277, 61);
-            grbUnit.TabIndex = 41;
+            grbUnit.TabIndex = 39;
             grbUnit.TabStop = false;
             grbUnit.Text = "Unit";
             // 

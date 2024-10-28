@@ -9,6 +9,10 @@ namespace FormApp1
     {
         private Gender setGender; //variable to store gender of person, stored as enum
         private Unit setUnit; //variable to store unit chosen, stored as enum
+        string name;
+        double height;
+        double weight;
+        int birthYear;
         public Form1()
         {
             InitializeComponent();
@@ -46,14 +50,36 @@ namespace FormApp1
         }
         private void rbMetric_CheckedChanged(object sender, EventArgs e)
         {
+            double height = Convert.ToDouble(txtboxWeight.Text);
+            double weight = Convert.ToDouble(txtboxHeight.Text);
+            double convertedWeight, convertedHeight;
+
+            if (!double.TryParse(txtboxHeight.Text, out height) || height <= 0)
+            {
+                MessageBox.Show("Enter a valid number!");
+                return;
+            }
+            if (!double.TryParse(txtboxWeight.Text, out weight) || weight <= 0)
+            {
+                MessageBox.Show("Enter a valid number!");
+                return;
+            }
+
+
             if (rbMetric.Checked)
             {
                 setUnit = Unit.Metric;
+                convertedWeight = Conversion.PoundsToKg(weight);
+                convertedHeight = Conversion.InchesToCm(height);
             }
             else
             {
                 setUnit = Unit.Imperial;
+                convertedWeight = Conversion.KgToPounds(weight);
+                convertedHeight = Conversion.CmToInch(height);
             }
+            txtboxWeight.Text = convertedWeight.ToString("F2");
+            txtboxHeight.Text = convertedHeight.ToString("F2");
         }
         //populating the combo box with enum of Activity Levels and pre populating the first box to low level of activity
         private void cbActivityLevel_SelectedIndexChange(object sender, EventArgs e)
@@ -63,7 +89,7 @@ namespace FormApp1
         }
 
         //failure handling to accept numerical input and values greater than 0. If 2/3 input fields are correct, error message prevails
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             string name = txtbName.Text;
             double height;
@@ -85,10 +111,8 @@ namespace FormApp1
                 MessageBox.Show("Enter a valid number!");
                 return;
             }
-
             // call method to instansiate person based on correct input
-
-
+            Person person = new Person();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -122,18 +146,23 @@ namespace FormApp1
 
         }
 
-        private void txtbName_TextChanged(object sender, EventArgs e, Person person)
+        private void txtboxWeight_TextChanged(object sender, EventArgs e)
         {
-            txtbName.Text.Trim();
-            if (!string.IsNullOrEmpty(txtbName.Text))
-            {
-                person.Name = txtbName.Text;
-            }
-            else
-            {
-                person.Name = "Unknown";
-            }
-            }
+
         }
+
+        //private void txtbName_TextChanged(object sender, EventArgs e, Person person)
+        //{
+        //    txtbName.Text.Trim();
+        //    if (!string.IsNullOrEmpty(txtbName.Text))
+        //    {
+        //        person.Name = txtbName.Text;
+        //    }
+        //    else
+        //    {
+        //        person.Name = "Unknown";
+        //    }
+        //}
     }
 }
+

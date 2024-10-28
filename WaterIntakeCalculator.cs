@@ -10,7 +10,7 @@ using System.Threading.Tasks;
     internal class WaterIntakeCalculator(Person person)
     {
     private Person person = new Person(); //This is giving error and I don't understand why as I am declaring name 
-    this.person = person;
+
         public static double CalculateWaterIntake(string gender, int age, double weight, double height, string activityLevel)
     {
 
@@ -109,31 +109,20 @@ using System.Threading.Tasks;
     //method to parse enum to strings to pass as argument in CalculateWaterIntake method
     public static ActivityLevel ActivityLevelParse(string activityLevel)
     {
-        if (Enum.TryParse(activityLevel, out ActivityLevel level))
-            {
-            return level;
-            }
-                else {
-            return ActivityLevel.Low;
-            }
+        ActivityLevel activitylevel;
 
-
-            //ActivityLevel level = ()
-
-
-
-            //switch (activityLevel.ToLower())
-            //{
-            //    case "low":
-            //        return ActivityLevel.Low;
-            //    case "medium":
-            //        return ActivityLevel.Medium;
-            //    case "high":
-            //        return ActivityLevel.High;
-            //    default: 
-            //        return ActivityLevel.Low;
-            //}
+            switch (activityLevel.ToLower())
+        {
+            case "low":
+                return ActivityLevel.Low;
+            case "medium":
+                return ActivityLevel.Medium;
+            case "high":
+                return ActivityLevel.High;
+            default:
+                return ActivityLevel.Low;
         }
+    }
 
 
 
