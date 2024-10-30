@@ -7,12 +7,19 @@ namespace FormApp1
 {
     public partial class Form1 : Form
     {
-        private Gender setGender; //variable to store gender of person, stored as enum
-        private Unit setUnit; //variable to store unit chosen, stored as enum
-        string name;
-        double height;
-        double weight;
-        int birthYear;
+        // these should not be here. What class gets these fields? Spoiler, its Form1.
+        // Why is this bad? Coupling. A Form should only have fields that relates to the function of a Form.
+        // These variables are really for a Person.
+        // Use the GUI controls in this class to represent these values, but do not store them like this.
+
+        // private Gender setGender; //variable to store gender of person, stored as enum -- I think youre attempting to use this as a method... but this is a field :)
+        // private Unit setUnit; //variable to store unit chosen, stored as enum
+        // string name;
+        // double height;
+        // double weight;
+        // int birthYear;
+
+
         public Form1()
         {
             InitializeComponent();
@@ -33,21 +40,6 @@ namespace FormApp1
 
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e) //method to check which radio button is checked and set gender
-        {
-            if (rbfemale.Checked)
-            {
-                setGender = Gender.Female;
-            }
-            else if (rbMale.Checked)
-            {
-                setGender = Gender.Male;
-            }
-            else if (rbOther.Checked)
-            {
-                setGender = Gender.Them;
-            }
-        }
         private void rbMetric_CheckedChanged(object sender, EventArgs e)
         {
             double height = Convert.ToDouble(txtboxWeight.Text);
@@ -82,10 +74,12 @@ namespace FormApp1
             txtboxWeight.Text = convertedWeight.ToString("F2");
             txtboxHeight.Text = convertedHeight.ToString("F2");
         }
+
+
         //populating the combo box with enum of Activity Levels and pre populating the first box to low level of activity
         private void cbActivityLevel_SelectedIndexChange(object sender, EventArgs e)
         {
-            ActivityLevel setActivityLevel = (ActivityLevel)cbActivityLevel.SelectedItem;
+            ActivityLevel setActivityLevel = (ActivityLevel)cbActivityLevel.SelectedItem; // kan du förklara vad du gör här?
             cbActivityLevel.SelectedIndex = (int)ActivityLevel.Low;
         }
 
@@ -113,14 +107,52 @@ namespace FormApp1
                 return;
             }
             // call method to instansiate person based on correct input
-            Person person = new Person();
+            Person person = new Person(); // ok but this does not instantiate a correct person, this just creates a new empty object
+
+            // try this instead
+            // Instantiate a person with properties set based on valid input
+            var personWithVariables = new Person
+            {
+                Name = name,
+                Height = height,
+                Weight = weight, // Added missing semicolon here
+                BirthYear = birthYear
+            };
+
+            // we can also get the gender they have set.
+            var userSetGender = GetGender();
+
+            personWithVariables.setNewGender(userSetGender);
         }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e) //method to check which radio button is checked and set gender
+                {
+                    // this entire block could be simplified, setGender just reflect what radiobutton is set
+
+                }
+
+                private Gender GetGender()
+                {
+                    if (rbfemale.Checked)
+                    {
+                        return Gender.Female;
+                    }
+                    else if (rbMale.Checked)
+                    {
+                        return Gender.Male;
+                    }
+                    else if (rbOther.Checked)
+                    {
+                        return Gender.Them;
+                    }
+                }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
+        // i recommend you delete all click methods for labels, they serve no purpose
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -171,4 +203,3 @@ namespace FormApp1
         //}
     }
 }
-
