@@ -66,6 +66,7 @@ namespace FormApp1
             }
 
 
+
             if (rbMetric.Checked)
             {
                 setUnit = Unit.Metric;
@@ -147,6 +148,11 @@ namespace FormApp1
         }
 
         private void txtboxWeight_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtbBirthYear_TextChanged(object sender, EventArgs e)
         {
 
         }

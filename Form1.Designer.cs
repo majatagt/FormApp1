@@ -225,6 +225,7 @@
             txtbBirthYear.Name = "txtbBirthYear";
             txtbBirthYear.Size = new Size(175, 31);
             txtbBirthYear.TabIndex = 15;
+            txtbBirthYear.TextChanged += txtbBirthYear_TextChanged;
             // 
             // lblRecWaterIntake
             // 
