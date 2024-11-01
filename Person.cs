@@ -4,10 +4,10 @@
 internal class Person
 {
     public string Name { get; set; }
-    public double Weight { get; private set; } // Changed to public with a private setter for outside access
+    public double Weight { get; private set; } // public with a private setter for outside access
     public double Height { get; private set; } // Same as above
     public string Gender { get; private set; } // Same as above
-    public int YearOfBirth { get; private set; } // Changed to public with a private setter
+    public int YearOfBirth { get; private set; } //public with a private setter
     public string ActivityLevel { get; private set; }
     public int Age { get; private set; } // Age is calculated and should be private to control changes
 
@@ -20,28 +20,31 @@ internal class Person
         Height = height;
         YearOfBirth = age;
 
-        if (gender != null)
-            Gender = gender;
-        else // gender is null
-            Gender = "Not Specified"
+        public void Gender GetGender()
+        {
+            if (rbFemale.Checked)
+            {
+                return Gender.Female;
+            }
+            else if (rbMale.Checked)
+            {
+                return Gender.Male;
+            }
+            else if (rbThem.Checked)
+            {
+                return Gender.Them;
+            }
+            return Gender.Them;
 
-        // equivalent to this, but no braces.
-        // if (gender != null)
-        // {
-        //     Gender = gender;
-        // }
-        // else
-        // {
-        //     Gender = "Not Specified";
-        // }
-
+        }
     }
 
-    // unclear what this method should do. do you want to change this object directly with 'Age = Age_theVariable' or do you want to 'return Age_theVariable' for use somewhere else?
-    public void CalculateAge(int yearOfBirth)//calculate from given input of year and store age in Age variable
+// unclear what this method should do. do you want to change this object directly with 'Age = Age_theVariable' or do you want to 'return Age_theVariable' for use somewhere else?
+    public  void CalculateAge(int yearOfBirth)//calculate from given input of year and store age in Age variable
     {
         int currentYear = DateTime.Now.Year;
         int Age_theVariable = currentYear - yearOfBirth; // this Age needs to be stored in the object, or returned
-        Age = Age_theVariable // what is Age here?
+        Age = Age_theVariable; // what is Age here?
     }
 }
+

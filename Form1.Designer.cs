@@ -258,17 +258,7 @@
             rstImperial.Text = "label2";
             rstImperial.TextAlign = ContentAlignment.TopCenter;
             rstImperial.Click += rstImperial_Click;
-            // 
-            // lblRestSavings
-            // 
-            lblRestSavings.AutoSize = true;
-            lblRestSavings.Font = new Font("Bookman Old Style", 10F);
-            lblRestSavings.Location = new Point(12, 350);
-            lblRestSavings.Name = "lblRestSavings";
-            lblRestSavings.Size = new Size(198, 23);
-            lblRestSavings.TabIndex = 19;
-            lblRestSavings.Text = "Retirement savings";
-            // 
+
             // comboBox1
             // 
             comboBox1.Font = new Font("Bookman Old Style", 10F);
@@ -277,48 +267,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(81, 31);
             comboBox1.TabIndex = 20;
-            // 
-            // retAge
-            // 
-            retAge.AutoSize = true;
-            retAge.Font = new Font("Bookman Old Style", 10F);
-            retAge.Location = new Point(12, 392);
-            retAge.Name = "retAge";
-            retAge.Size = new Size(161, 23);
-            retAge.TabIndex = 21;
-            retAge.Text = "Retirement Age";
-            retAge.Click += label1_Click_1;
-            // 
-            // lblCurSav
-            // 
-            lblCurSav.AutoSize = true;
-            lblCurSav.Font = new Font("Bookman Old Style", 10F);
-            lblCurSav.Location = new Point(270, 387);
-            lblCurSav.Name = "lblCurSav";
-            lblCurSav.Size = new Size(171, 23);
-            lblCurSav.TabIndex = 22;
-            lblCurSav.Text = "Current Savings";
-            // 
-            // lblMonthSav
-            // 
-            lblMonthSav.AutoSize = true;
-            lblMonthSav.Font = new Font("Bookman Old Style", 10F);
-            lblMonthSav.Location = new Point(270, 427);
-            lblMonthSav.Name = "lblMonthSav";
-            lblMonthSav.Size = new Size(172, 23);
-            lblMonthSav.TabIndex = 23;
-            lblMonthSav.Text = "Monthly Savings";
-            // 
-            // lblAnnualInterest
-            // 
-            lblAnnualInterest.AutoSize = true;
-            lblAnnualInterest.Font = new Font("Bookman Old Style", 10F);
-            lblAnnualInterest.Location = new Point(270, 468);
-            lblAnnualInterest.Name = "lblAnnualInterest";
-            lblAnnualInterest.Size = new Size(166, 23);
-            lblAnnualInterest.TabIndex = 24;
-            lblAnnualInterest.Text = "Annual Interest";
-            // 
+
             // textBox2
             // 
             textBox2.Font = new Font("Bookman Old Style", 10F);
@@ -334,109 +283,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(155, 31);
             textBox3.TabIndex = 26;
-            // 
-            // textBox4
-            // 
-            textBox4.Font = new Font("Bookman Old Style", 10F);
-            textBox4.Location = new Point(446, 460);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(155, 31);
-            textBox4.TabIndex = 27;
-            // 
-            // lblYeartoRet
-            // 
-            lblYeartoRet.AutoSize = true;
-            lblYeartoRet.Font = new Font("Bookman Old Style", 10F);
-            lblYeartoRet.Location = new Point(634, 384);
-            lblYeartoRet.Name = "lblYeartoRet";
-            lblYeartoRet.Size = new Size(205, 23);
-            lblYeartoRet.TabIndex = 28;
-            lblYeartoRet.Text = "Years to Retirement";
-            // 
-            // lblTotalFutureAmount
-            // 
-            lblTotalFutureAmount.AutoSize = true;
-            lblTotalFutureAmount.Font = new Font("Bookman Old Style", 10F);
-            lblTotalFutureAmount.Location = new Point(634, 420);
-            lblTotalFutureAmount.Name = "lblTotalFutureAmount";
-            lblTotalFutureAmount.Size = new Size(218, 23);
-            lblTotalFutureAmount.TabIndex = 29;
-            lblTotalFutureAmount.Text = "Total Future Amount";
-            // 
-            // lblTotInterest
-            // 
-            lblTotInterest.AutoSize = true;
-            lblTotInterest.Font = new Font("Bookman Old Style", 10F);
-            lblTotInterest.Location = new Point(634, 465);
-            lblTotInterest.Name = "lblTotInterest";
-            lblTotInterest.Size = new Size(143, 23);
-            lblTotInterest.TabIndex = 31;
-            lblTotInterest.Text = "Total Interest";
-            // 
-            // lblTotInvestment
-            // 
-            lblTotInvestment.AutoSize = true;
-            lblTotInvestment.Font = new Font("Bookman Old Style", 10F);
-            lblTotInvestment.Location = new Point(634, 507);
-            lblTotInvestment.Name = "lblTotInvestment";
-            lblTotInvestment.Size = new Size(176, 23);
-            lblTotInvestment.TabIndex = 30;
-            lblTotInvestment.Text = "Total Investment";
-            // 
-            // lblGrowthInPer
-            // 
-            lblGrowthInPer.AutoSize = true;
-            lblGrowthInPer.Font = new Font("Bookman Old Style", 10F);
-            lblGrowthInPer.Location = new Point(634, 550);
-            lblGrowthInPer.Name = "lblGrowthInPer";
-            lblGrowthInPer.Size = new Size(190, 23);
-            lblGrowthInPer.TabIndex = 31;
-            lblGrowthInPer.Text = "Total Growth in %";
-            // 
-            // rsltYearstoRetirement
-            // 
-            rsltYearstoRetirement.Font = new Font("Bookman Old Style", 10F);
-            rsltYearstoRetirement.Location = new Point(933, 382);
-            rsltYearstoRetirement.Name = "rsltYearstoRetirement";
-            rsltYearstoRetirement.Size = new Size(8, 8);
-            rsltYearstoRetirement.TabIndex = 32;
-            rsltYearstoRetirement.Text = "label1";
-            // 
-            // RsltFutureAmount
-            // 
-            RsltFutureAmount.Font = new Font("Bookman Old Style", 10F);
-            RsltFutureAmount.Location = new Point(906, 422);
-            RsltFutureAmount.Name = "RsltFutureAmount";
-            RsltFutureAmount.Size = new Size(88, 38);
-            RsltFutureAmount.TabIndex = 33;
-            RsltFutureAmount.Text = "label2";
-            // 
-            // RsltTotInterest
-            // 
-            RsltTotInterest.Font = new Font("Bookman Old Style", 10F);
-            RsltTotInterest.Location = new Point(906, 466);
-            RsltTotInterest.Name = "RsltTotInterest";
-            RsltTotInterest.Size = new Size(8, 8);
-            RsltTotInterest.TabIndex = 34;
-            RsltTotInterest.Text = "label3";
-            // 
-            // rstTotalInvestment
-            // 
-            rstTotalInvestment.Font = new Font("Bookman Old Style", 10F);
-            rstTotalInvestment.Location = new Point(906, 515);
-            rstTotalInvestment.Name = "rstTotalInvestment";
-            rstTotalInvestment.Size = new Size(8, 8);
-            rstTotalInvestment.TabIndex = 35;
-            rstTotalInvestment.Text = "label4";
-            // 
-            // rstTotalGrowth
-            // 
-            rstTotalGrowth.Font = new Font("Bookman Old Style", 10F);
-            rstTotalGrowth.Location = new Point(906, 550);
-            rstTotalGrowth.Name = "rstTotalGrowth";
-            rstTotalGrowth.Size = new Size(88, 38);
-            rstTotalGrowth.TabIndex = 36;
-            rstTotalGrowth.Text = "label5";
+
             // 
             // rbOther
             // 

@@ -2,6 +2,7 @@ using Microsoft.VisualBasic.ApplicationServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
 using System.Diagnostics.Eventing.Reader;
+using System;
 
 namespace FormApp1
 {
@@ -90,6 +91,8 @@ namespace FormApp1
             double height;
             double weight;
             int birthYear;
+            string gender = GetGender().ToString();
+            string activityLevel = cbActivityLevel.SelectedItem.ToString();
 
             if (!double.TryParse(txtboxHeight.Text, out height) || height <= 0)
             {
@@ -106,18 +109,21 @@ namespace FormApp1
                 MessageBox.Show("Enter a valid number!");
                 return;
             }
-            // call method to instansiate person based on correct input
-            Person person = new Person(); // ok but this does not instantiate a correct person, this just creates a new empty object
 
             // try this instead
             // Instantiate a person with properties set based on valid input
-            var personWithVariables = new Person
+            var personWithVariables = new Person()
             {
                 Name = name,
                 Height = height,
                 Weight = weight, // Added missing semicolon here
                 BirthYear = birthYear
+
             };
+
+            person.CalculateAge();
+            person.ActivityLevel = activityLevel;
+            DisplayWaterIntake(person);
 
             // we can also get the gender they have set.
             var userSetGender = GetGender();
@@ -125,45 +131,23 @@ namespace FormApp1
             personWithVariables.setNewGender(userSetGender);
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e) //method to check which radio button is checked and set gender
-                {
-                    // this entire block could be simplified, setGender just reflect what radiobutton is set
+        public void GenderRadioButton_CheckedChanged(object sender, EventArgs e); //method to check which radio button is checked and set gender
+               
 
-                }
+        //private Gender GetGender()
+            // if the gender box is changed handle this here 
+        //rbFemale.CheckedChange = GenderRadioButton_CheckedChanged;
+        //rbMale.CheckedChanged = GenderRadioButton_CheckedChanged;
+        //rbThem.CheckedChanged = GenderRadioButton_CheckedChanged;
+    }
+        
 
-                private Gender GetGender()
-                {
-                    if (rbfemale.Checked)
-                    {
-                        return Gender.Female;
-                    }
-                    else if (rbMale.Checked)
-                    {
-                        return Gender.Male;
-                    }
-                    else if (rbOther.Checked)
-                    {
-                        return Gender.Them;
-                    }
-                }
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-
-        // i recommend you delete all click methods for labels, they serve no purpose
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void lblMonthSav_Click(object sender, EventArgs e)
         {
 
@@ -189,17 +173,17 @@ namespace FormApp1
 
         }
 
-        //private void txtbName_TextChanged(object sender, EventArgs e, Person person)
-        //{
-        //    txtbName.Text.Trim();
-        //    if (!string.IsNullOrEmpty(txtbName.Text))
-        //    {
-        //        person.Name = txtbName.Text;
-        //    }
-        //    else
-        //    {
-        //        person.Name = "Unknown";
-        //    }
-        //}
-    }
+    //private void txtbName_TextChanged(object sender, EventArgs e, Person person)
+    //{
+    //    txtbName.Text.Trim();
+    //    if (!string.IsNullOrEmpty(txtbName.Text))
+    //    {
+    //        person.Name = txtbName.Text;
+    //    }
+    //    else
+    //    {
+    //        person.Name = "Unknown";
+    //    }
+    //}
 }
+

@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 
     internal class WaterIntakeCalculator(Person person)
     {
-    private Person person = new Person(); //This is giving error and I don't understand why as I am declaring name 
-
         public static double CalculateWaterIntake(string gender, int age, double weight, double height, string activityLevel)
     {
 
@@ -21,12 +19,12 @@ using System.Threading.Tasks;
         double heightIntake = HeightIntake(height);
         double activityLevels = ActivityLevels(ActivityLevelParse(activityLevel));
 
-        double recomendedIntake = baseIntake * genderIntake * ageIntake * heightIntake * activityLevels;
-        return recomendedIntake;
+        return recomendedIntake = baseIntake * genderIntake * ageIntake * heightIntake * activityLevels;
+
 
     }
     //method to get calculate total water intake based on weight
-    public static double BaseIntake(double weight)
+    private static double BaseIntake(double weight)
     {
         return 33 * weight;
     }
@@ -88,6 +86,7 @@ using System.Threading.Tasks;
     }
     public static double ActivityLevels(ActivityLevel activityLevel)
     {
+
         //set activity level to low as standard if no valid input, but no input not likely
 
         switch (activityLevel)
@@ -124,6 +123,20 @@ using System.Threading.Tasks;
         }
     }
 
+    private void DisplayWaterIntake(Person person)
+    {
+        double dailyIntake = WaterIntakeCalculator.CalculateWaterIntake
+            (
+            person.Gender,
+            person.Age,
+            person.Weight,
+            person.Height,
+            person.ActivityLevel
+            );
+
+        double dailtyintakeImperial = Conversion.MlToOz(dailyIntakeMetric);
+
+    }
 
 
 
