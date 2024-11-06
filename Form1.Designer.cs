@@ -87,6 +87,7 @@
             lblweight.Size = new Size(119, 23);
             lblweight.TabIndex = 2;
             lblweight.Text = "Weight (kg)";
+            lblweight.Click += lblweight_Click;
             // 
             // lblheight
             // 
@@ -113,6 +114,7 @@
             txtboxWeight.Name = "txtboxWeight";
             txtboxWeight.Size = new Size(196, 31);
             txtboxWeight.TabIndex = 5;
+            txtboxWeight.TextChanged += txtboxWeight_TextChanged;
             // 
             // txtboxHeight
             // 
@@ -217,7 +219,7 @@
             txtbBirthYear.Location = new Point(527, 184);
             txtbBirthYear.Name = "txtbBirthYear";
             txtbBirthYear.Size = new Size(175, 31);
-            txtbBirthYear.TabIndex = 15;
+            txtbBirthYear.TabIndex = 12;
             // 
             // lblRecWaterIntake
             // 
@@ -240,42 +242,42 @@
             lblMetricIntake.Text = "label1";
             lblMetricIntake.TextAlign = ContentAlignment.TopCenter;
             lblMetricIntake.UseCompatibleTextRendering = true;
-            //lblMetricIntake.Click += lblMetricIntake_Click;
+            lblMetricIntake.Click += lblMetricIntake_Click;
             // 
             // lblRestSavings
             // 
             lblRestSavings.Location = new Point(0, 0);
             lblRestSavings.Name = "lblRestSavings";
             lblRestSavings.Size = new Size(100, 23);
-            lblRestSavings.TabIndex = 55;
+            lblRestSavings.TabIndex = 54;
             // 
             // retAge
             // 
             retAge.Location = new Point(0, 0);
             retAge.Name = "retAge";
             retAge.Size = new Size(100, 23);
-            retAge.TabIndex = 54;
+            retAge.TabIndex = 53;
             // 
             // lblCurSav
             // 
             lblCurSav.Location = new Point(0, 0);
             lblCurSav.Name = "lblCurSav";
             lblCurSav.Size = new Size(100, 23);
-            lblCurSav.TabIndex = 53;
+            lblCurSav.TabIndex = 52;
             // 
             // lblMonthSav
             // 
             lblMonthSav.Location = new Point(0, 0);
             lblMonthSav.Name = "lblMonthSav";
             lblMonthSav.Size = new Size(100, 23);
-            lblMonthSav.TabIndex = 52;
+            lblMonthSav.TabIndex = 51;
             // 
             // lblAnnualInterest
             // 
             lblAnnualInterest.Location = new Point(0, 0);
             lblAnnualInterest.Name = "lblAnnualInterest";
             lblAnnualInterest.Size = new Size(100, 23);
-            lblAnnualInterest.TabIndex = 51;
+            lblAnnualInterest.TabIndex = 50;
             // 
             // lblYeartoRet
             // 

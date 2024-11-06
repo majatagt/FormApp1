@@ -9,6 +9,18 @@ namespace FormApp1
 {
     public partial class Form1 : Form
     {
+        // these should not be here. What class gets these fields? Spoiler, its Form1.
+        // Why is this bad? Coupling. A Form should only have fields that relates to the function of a Form.
+        // These variables are really for a Person.
+        // Use the GUI controls in this class to represent these values, but do not store them like this.
+
+        // private Gender setGender; //variable to store gender of person, stored as enum -- I think youre attempting to use this as a method... but this is a field :)
+        // private Unit setUnit; //variable to store unit chosen, stored as enum
+        // string name;
+        // double height;
+        // double weight;
+        // int birthYear;
+
 
         public Form1()
         {
@@ -57,7 +69,7 @@ namespace FormApp1
                         //setUnit = Unit.Metric;
                         convertedWeight = Conversion.PoundsToKg(weight);
                         convertedHeight = Conversion.InchToCm(height);
-                        
+
 
                     }
                     else
@@ -120,14 +132,25 @@ namespace FormApp1
 
             WaterIntakeCalculator waterIntakeCalculator = new WaterIntakeCalculator(person);
             var recomendedIntake = waterIntakeCalculator.CalculateWaterIntake();
-            
-         
-            lblMetricIntake.Text = recomendedIntake.ToString();
 
 
+
+            if (rbImperial.Checked)
+            {
+
+                txtboxWeight.Text = Conversion.KgToPounds(weight).ToString("F2");
+                txtboxHeight.Text = Conversion.CmToInch(height).ToString("F2");
+                lblMetricIntake.Text = Conversion.MlToOz(weight).ToString();
+            }
+            else
+            {
+                txtboxWeight.Text = weight.ToString();
+                txtboxHeight.Text = weight.ToString();
+                lblMetricIntake.Text = recomendedIntake.ToString();
+            }
         }
 
-        private int GetAge()
+        public int GetAge()
         {
             // Bug here - What is they DATE of birth is in April and Currently its Janurary;
             // This will create them being older then currently are.
@@ -155,8 +178,20 @@ namespace FormApp1
             return EGender.Them;
         }
 
+        private void lblMetricIntake_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void lblweight_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtboxWeight_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

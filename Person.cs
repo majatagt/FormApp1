@@ -12,7 +12,7 @@ public class Person
 
 
 
-    public Person(string name, double weight, double height, int age, EGender gender, EActivityLevel activityLevel) // gender is declared in the constructor, and needs to be handled as such
+    public Person(string name, double weight, double height, int age, EGender gender, EActivityLevel activityLevel) 
     {
         Name = name;
         Weight = weight;
@@ -24,9 +24,12 @@ public class Person
 
         public EGender GetGender()
         {
-            
-                return EGender.Female;
-
+        if (Gender == EGender.Male)
+            return EGender.Male;
+        if (Gender == EGender.Female)
+            return EGender.Female;
+        else
+            return EGender.Them;
         }
         
     }

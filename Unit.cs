@@ -1,7 +1,5 @@
 ﻿
-
-
-enum Unit
+public enum EUnit
 {
 
     Metric,
