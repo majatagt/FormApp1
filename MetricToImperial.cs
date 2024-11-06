@@ -9,17 +9,18 @@ class Conversion
     {
         return height / 2.54;
     }
-    public static double InchesToCm(double inches)
-    {
-        return inches * 2.54;
-    }
     public static double CmToInch(double centimeter)
     {
         return centimeter / 2.54;
     }
-    public static double MlToOz(double Oz)
+    public static double InchToCm(double height)
+
     {
-        return Oz * 29.5735;
+        return height * 2.54;
+    }
+    public static double MlToOz(double oz)
+    {
+        return oz * 29.5735;
     }
     public static double OzToMl(double Ml)
     {

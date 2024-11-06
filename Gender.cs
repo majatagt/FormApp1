@@ -1,5 +1,5 @@
 ﻿
-enum Gender
+public enum EGender
 {
 
     Female,

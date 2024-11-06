@@ -1,8 +1,6 @@
 ﻿
 
-
-
-enum ActivityLevel
+public enum EActivityLevel
 {
     Low,
     Medium,

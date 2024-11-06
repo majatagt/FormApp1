@@ -45,16 +45,11 @@
             txtbBirthYear = new TextBox();
             lblRecWaterIntake = new Label();
             lblMetricIntake = new Label();
-            rstImperial = new Label();
             lblRestSavings = new Label();
-            comboBox1 = new ComboBox();
             retAge = new Label();
             lblCurSav = new Label();
             lblMonthSav = new Label();
             lblAnnualInterest = new Label();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
             lblYeartoRet = new Label();
             lblTotalFutureAmount = new Label();
             lblTotInterest = new Label();
@@ -118,7 +113,6 @@
             txtboxWeight.Name = "txtboxWeight";
             txtboxWeight.Size = new Size(196, 31);
             txtboxWeight.TabIndex = 5;
-            txtboxWeight.TextChanged += txtboxWeight_TextChanged;
             // 
             // txtboxHeight
             // 
@@ -139,7 +133,6 @@
             rbfemale.TabStop = true;
             rbfemale.Text = "Female";
             rbfemale.UseVisualStyleBackColor = true;
-            rbfemale.CheckedChanged += radioButton1_CheckedChanged;
             // 
             // rbMale
             // 
@@ -225,7 +218,6 @@
             txtbBirthYear.Name = "txtbBirthYear";
             txtbBirthYear.Size = new Size(175, 31);
             txtbBirthYear.TabIndex = 15;
-            txtbBirthYear.TextChanged += txtbBirthYear_TextChanged;
             // 
             // lblRecWaterIntake
             // 
@@ -239,51 +231,121 @@
             // 
             // lblMetricIntake
             // 
+            lblMetricIntake.AutoSize = true;
             lblMetricIntake.Font = new Font("Bookman Old Style", 10F);
             lblMetricIntake.Location = new Point(760, 87);
             lblMetricIntake.Name = "lblMetricIntake";
-            lblMetricIntake.Size = new Size(263, 35);
+            lblMetricIntake.Size = new Size(68, 28);
             lblMetricIntake.TabIndex = 17;
             lblMetricIntake.Text = "label1";
             lblMetricIntake.TextAlign = ContentAlignment.TopCenter;
-            lblMetricIntake.Click += lblMetricIntake_Click;
+            lblMetricIntake.UseCompatibleTextRendering = true;
+            //lblMetricIntake.Click += lblMetricIntake_Click;
             // 
-            // rstImperial
+            // lblRestSavings
             // 
-            rstImperial.Font = new Font("Bookman Old Style", 10F);
-            rstImperial.Location = new Point(760, 138);
-            rstImperial.Name = "rstImperial";
-            rstImperial.Size = new Size(263, 35);
-            rstImperial.TabIndex = 18;
-            rstImperial.Text = "label2";
-            rstImperial.TextAlign = ContentAlignment.TopCenter;
-            rstImperial.Click += rstImperial_Click;
-
-            // comboBox1
+            lblRestSavings.Location = new Point(0, 0);
+            lblRestSavings.Name = "lblRestSavings";
+            lblRestSavings.Size = new Size(100, 23);
+            lblRestSavings.TabIndex = 55;
             // 
-            comboBox1.Font = new Font("Bookman Old Style", 10F);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(174, 389);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(81, 31);
-            comboBox1.TabIndex = 20;
-
-            // textBox2
+            // retAge
             // 
-            textBox2.Font = new Font("Bookman Old Style", 10F);
-            textBox2.Location = new Point(447, 384);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(154, 31);
-            textBox2.TabIndex = 25;
+            retAge.Location = new Point(0, 0);
+            retAge.Name = "retAge";
+            retAge.Size = new Size(100, 23);
+            retAge.TabIndex = 54;
             // 
-            // textBox3
+            // lblCurSav
             // 
-            textBox3.Font = new Font("Bookman Old Style", 10F);
-            textBox3.Location = new Point(446, 421);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(155, 31);
-            textBox3.TabIndex = 26;
-
+            lblCurSav.Location = new Point(0, 0);
+            lblCurSav.Name = "lblCurSav";
+            lblCurSav.Size = new Size(100, 23);
+            lblCurSav.TabIndex = 53;
+            // 
+            // lblMonthSav
+            // 
+            lblMonthSav.Location = new Point(0, 0);
+            lblMonthSav.Name = "lblMonthSav";
+            lblMonthSav.Size = new Size(100, 23);
+            lblMonthSav.TabIndex = 52;
+            // 
+            // lblAnnualInterest
+            // 
+            lblAnnualInterest.Location = new Point(0, 0);
+            lblAnnualInterest.Name = "lblAnnualInterest";
+            lblAnnualInterest.Size = new Size(100, 23);
+            lblAnnualInterest.TabIndex = 51;
+            // 
+            // lblYeartoRet
+            // 
+            lblYeartoRet.Location = new Point(0, 0);
+            lblYeartoRet.Name = "lblYeartoRet";
+            lblYeartoRet.Size = new Size(100, 23);
+            lblYeartoRet.TabIndex = 49;
+            // 
+            // lblTotalFutureAmount
+            // 
+            lblTotalFutureAmount.Location = new Point(0, 0);
+            lblTotalFutureAmount.Name = "lblTotalFutureAmount";
+            lblTotalFutureAmount.Size = new Size(100, 23);
+            lblTotalFutureAmount.TabIndex = 48;
+            // 
+            // lblTotInterest
+            // 
+            lblTotInterest.Location = new Point(0, 0);
+            lblTotInterest.Name = "lblTotInterest";
+            lblTotInterest.Size = new Size(100, 23);
+            lblTotInterest.TabIndex = 47;
+            // 
+            // lblTotInvestment
+            // 
+            lblTotInvestment.Location = new Point(0, 0);
+            lblTotInvestment.Name = "lblTotInvestment";
+            lblTotInvestment.Size = new Size(100, 23);
+            lblTotInvestment.TabIndex = 46;
+            // 
+            // lblGrowthInPer
+            // 
+            lblGrowthInPer.Location = new Point(0, 0);
+            lblGrowthInPer.Name = "lblGrowthInPer";
+            lblGrowthInPer.Size = new Size(100, 23);
+            lblGrowthInPer.TabIndex = 45;
+            // 
+            // rsltYearstoRetirement
+            // 
+            rsltYearstoRetirement.Location = new Point(0, 0);
+            rsltYearstoRetirement.Name = "rsltYearstoRetirement";
+            rsltYearstoRetirement.Size = new Size(100, 23);
+            rsltYearstoRetirement.TabIndex = 44;
+            // 
+            // RsltFutureAmount
+            // 
+            RsltFutureAmount.Location = new Point(0, 0);
+            RsltFutureAmount.Name = "RsltFutureAmount";
+            RsltFutureAmount.Size = new Size(100, 23);
+            RsltFutureAmount.TabIndex = 43;
+            // 
+            // RsltTotInterest
+            // 
+            RsltTotInterest.Location = new Point(0, 0);
+            RsltTotInterest.Name = "RsltTotInterest";
+            RsltTotInterest.Size = new Size(100, 23);
+            RsltTotInterest.TabIndex = 42;
+            // 
+            // rstTotalInvestment
+            // 
+            rstTotalInvestment.Location = new Point(0, 0);
+            rstTotalInvestment.Name = "rstTotalInvestment";
+            rstTotalInvestment.Size = new Size(100, 23);
+            rstTotalInvestment.TabIndex = 41;
+            // 
+            // rstTotalGrowth
+            // 
+            rstTotalGrowth.Location = new Point(0, 0);
+            rstTotalGrowth.Name = "rstTotalGrowth";
+            rstTotalGrowth.Size = new Size(100, 23);
+            rstTotalGrowth.TabIndex = 40;
             // 
             // rbOther
             // 
@@ -339,16 +401,11 @@
             Controls.Add(lblTotInterest);
             Controls.Add(lblTotalFutureAmount);
             Controls.Add(lblYeartoRet);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
             Controls.Add(lblAnnualInterest);
             Controls.Add(lblMonthSav);
             Controls.Add(lblCurSav);
             Controls.Add(retAge);
-            Controls.Add(comboBox1);
             Controls.Add(lblRestSavings);
-            Controls.Add(rstImperial);
             Controls.Add(lblMetricIntake);
             Controls.Add(lblRecWaterIntake);
             Controls.Add(txtbBirthYear);
@@ -364,7 +421,6 @@
             Controls.Add(lblname);
             Name = "Form1";
             Text = "Form1";
-            Load += Form1_Load;
             grbGender.ResumeLayout(false);
             grbGender.PerformLayout();
             grbUnit.ResumeLayout(false);
@@ -391,17 +447,11 @@
         private Label lblBirthyear;
         private TextBox txtbBirthYear;
         private Label lblRecWaterIntake;
-        private Label lblMetricIntake;
-        private Label rstImperial;
         private Label lblRestSavings;
-        private ComboBox comboBox1;
         private Label retAge;
         private Label lblCurSav;
         private Label lblMonthSav;
         private Label lblAnnualInterest;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
         private Label lblYeartoRet;
         private Label lblTotalFutureAmount;
         private Label lblTotInterest;
@@ -415,5 +465,6 @@
         private RadioButton rbOther;
         private GroupBox grbGender;
         private GroupBox grbUnit;
+        public Label lblMetricIntake;
     }
 }

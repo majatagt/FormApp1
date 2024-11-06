@@ -3,29 +3,18 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
 using System.Diagnostics.Eventing.Reader;
 using System;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace FormApp1
 {
     public partial class Form1 : Form
     {
-        // these should not be here. What class gets these fields? Spoiler, its Form1.
-        // Why is this bad? Coupling. A Form should only have fields that relates to the function of a Form.
-        // These variables are really for a Person.
-        // Use the GUI controls in this class to represent these values, but do not store them like this.
-
-        // private Gender setGender; //variable to store gender of person, stored as enum -- I think youre attempting to use this as a method... but this is a field :)
-        // private Unit setUnit; //variable to store unit chosen, stored as enum
-        // string name;
-        // double height;
-        // double weight;
-        // int birthYear;
-
 
         public Form1()
         {
             InitializeComponent();
             InitializeGUI();
-            cbActivityLevel.DataSource = Enum.GetValues(typeof(ActivityLevel));
+            cbActivityLevel.DataSource = Enum.GetValues(typeof(EActivityLevel));
 
         }
 
@@ -43,56 +32,66 @@ namespace FormApp1
 
         private void rbMetric_CheckedChanged(object sender, EventArgs e)
         {
-            double height = Convert.ToDouble(txtboxWeight.Text);
-            double weight = Convert.ToDouble(txtboxHeight.Text);
-            double convertedWeight, convertedHeight;
-
-            if (!double.TryParse(txtboxHeight.Text, out height) || height <= 0)
+            if (!String.IsNullOrEmpty(txtboxWeight.Text) && !String.IsNullOrEmpty(txtboxHeight.Text))
             {
-                MessageBox.Show("Enter a valid number!");
-                return;
-            }
-            if (!double.TryParse(txtboxWeight.Text, out weight) || weight <= 0)
-            {
-                MessageBox.Show("Enter a valid number!");
-                return;
-            }
+                {
+
+                    double height = Convert.ToDouble(txtboxWeight.Text);
+                    double weight = Convert.ToDouble(txtboxHeight.Text);
+                    double convertedWeight, convertedHeight;
+
+                    if (!double.TryParse(txtboxHeight.Text, out height) || height <= 0)
+                    {
+                        MessageBox.Show("Enter a valid number!");
+                        return;
+                    }
+                    if (!double.TryParse(txtboxWeight.Text, out weight) || weight <= 0)
+                    {
+                        MessageBox.Show("Enter a valid number!");
+                        return;
+                    }
 
 
+                    if (rbMetric.Checked)
+                    {
+                        //setUnit = Unit.Metric;
+                        convertedWeight = Conversion.PoundsToKg(weight);
+                        convertedHeight = Conversion.InchToCm(height);
+                        
 
-            if (rbMetric.Checked)
-            {
-                setUnit = Unit.Metric;
-                convertedWeight = Conversion.PoundsToKg(weight);
-                convertedHeight = Conversion.InchesToCm(height);
+                    }
+                    else
+                    {
+                        // setUnit = Unit.Imperial;
+                        convertedWeight = Conversion.KgToPounds(weight);
+                        convertedHeight = Conversion.CmToInch(height);
+
+                    }
+                    //txtboxWeight.Text = convertedWeight.ToString("F2");
+                    //txtboxHeight.Text = convertedHeight.ToString("F2");
+                }
             }
-            else
-            {
-                setUnit = Unit.Imperial;
-                convertedWeight = Conversion.KgToPounds(weight);
-                convertedHeight = Conversion.CmToInch(height);
-            }
-            txtboxWeight.Text = convertedWeight.ToString("F2");
-            txtboxHeight.Text = convertedHeight.ToString("F2");
+
         }
-
-
         //populating the combo box with enum of Activity Levels and pre populating the first box to low level of activity
         private void cbActivityLevel_SelectedIndexChange(object sender, EventArgs e)
         {
-            ActivityLevel setActivityLevel = (ActivityLevel)cbActivityLevel.SelectedItem; // kan du förklara vad du gör här?
-            cbActivityLevel.SelectedIndex = (int)ActivityLevel.Low;
+            EActivityLevel setActivityLevel = (EActivityLevel)cbActivityLevel.SelectedItem; // kan du förklara vad du gör här?
+            cbActivityLevel.SelectedIndex = (int)EActivityLevel.Low;
         }
 
         //failure handling to accept numerical input and values greater than 0. If 2/3 input fields are correct, error message prevails
         public void button1_Click(object sender, EventArgs e)
         {
+
             string name = txtbName.Text;
             double height;
             double weight;
             int birthYear;
-            string gender = GetGender().ToString();
-            string activityLevel = cbActivityLevel.SelectedItem.ToString();
+            EGender gender;
+
+
+            EActivityLevel activityLevel = (EActivityLevel)Enum.Parse(typeof(EActivityLevel), cbActivityLevel.SelectedItem.ToString()); //cbActivityLevel.SelectedItem;
 
             if (!double.TryParse(txtboxHeight.Text, out height) || height <= 0)
             {
@@ -110,80 +109,54 @@ namespace FormApp1
                 return;
             }
 
+            // Write a Function checking the RB Boxes for Which Gender To Set.
+            gender = GetEGender();
+            int age = GetAge();
+
+
             // try this instead
             // Instantiate a person with properties set based on valid input
-            var personWithVariables = new Person()
+            var person = new Person(name, weight, height, age, gender, activityLevel);
+
+            WaterIntakeCalculator waterIntakeCalculator = new WaterIntakeCalculator(person);
+            var recomendedIntake = waterIntakeCalculator.CalculateWaterIntake();
+            
+         
+            lblMetricIntake.Text = recomendedIntake.ToString();
+
+
+        }
+
+        private int GetAge()
+        {
+            // Bug here - What is they DATE of birth is in April and Currently its Janurary;
+            // This will create them being older then currently are.
+            return DateTime.Now.Year - int.Parse(txtbBirthYear.Text);
+        }
+
+        private EGender GetEGender()
+        {
+            if (rbfemale.Checked)
             {
-                Name = name,
-                Height = height,
-                Weight = weight, // Added missing semicolon here
-                BirthYear = birthYear
+                return EGender.Female;
+            }
 
-            };
+            if (rbMale.Checked)
+            {
+                return EGender.Male;
+            }
 
-            person.CalculateAge();
-            person.ActivityLevel = activityLevel;
-            DisplayWaterIntake(person);
+            if (rbOther.Checked)
+            {
+                return EGender.Them;
+            }
 
-            // we can also get the gender they have set.
-            var userSetGender = GetGender();
 
-            personWithVariables.setNewGender(userSetGender);
+            return EGender.Them;
         }
 
-        public void GenderRadioButton_CheckedChanged(object sender, EventArgs e); //method to check which radio button is checked and set gender
-               
 
-        //private Gender GetGender()
-            // if the gender box is changed handle this here 
-        //rbFemale.CheckedChange = GenderRadioButton_CheckedChanged;
-        //rbMale.CheckedChanged = GenderRadioButton_CheckedChanged;
-        //rbThem.CheckedChanged = GenderRadioButton_CheckedChanged;
+
     }
-        
-
-        
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-        private void lblMonthSav_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblMetricIntake_Click(object sender, EventArgs e)
-        {
-            //lblMetricIntake.Text = WaterIntakeCalculator();
-        }
-
-        private void rstImperial_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtboxWeight_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbBirthYear_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-    //private void txtbName_TextChanged(object sender, EventArgs e, Person person)
-    //{
-    //    txtbName.Text.Trim();
-    //    if (!string.IsNullOrEmpty(txtbName.Text))
-    //    {
-    //        person.Name = txtbName.Text;
-    //    }
-    //    else
-    //    {
-    //        person.Name = "Unknown";
-    //    }
-    //}
 }
 
